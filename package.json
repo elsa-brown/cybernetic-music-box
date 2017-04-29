@@ -1,0 +1,27 @@
+{
+  "name": "poem",
+  "version": "1.0.0",
+  "description": "stackathon project for Grace Hopper Program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify index.js -o bundle.js -v",
+    "serve": "http-server -c-1"
+  },
+  "author": "elsa",
+  "license": "ISC",
+  "devDependencies": {
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "browserify": "^14.3.0",
+    "clarifai": "^2.1.5",
+    "get-image-colors": "^1.8.1",
+    "http-server": "^0.9.0",
+    "jimp": "^0.2.27",
+    "node-vibrant": "^3.0.0-alpha.2",
+    "phonograph": "^1.4.3",
+    "scrollmagic": "^2.0.5",
+    "tone": "^0.10.0"
+  }
+}

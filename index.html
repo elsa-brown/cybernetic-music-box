@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+<!--     <script src="plugins/debug.addIndicators.js"></script>  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+    <audio src="./static/Voice.mp3">
+  </audio>
+    <!-- bootstrap container -->
+    <div id="main" class="container-fluid">
+    <!-- audio element -->
+      <div class='visible'> 
+     <!-- visual elements begin -->
+        <div class="matrix" class="col-lg-12">
+          <img src="./static/matrix.gif" class="col-lg-12" />
+          MATRIX
+        </div>
+        <div id="deer1" class="col-lg-12">
+            DEER 1
+            <img src="./static/deer1.jpg" />
+        </div> -->
+      <!-- image without 'row' --> 
+        <div class="matrix" class="col-lg-12">
+          <img src="./static/matrix.gif" class="col-lg-12" />
+          MATRIX
+        </div>
+      <!--  image WITH 'row' --> 
+        <div class="row">
+          <div id="deer2" class="col-lg-12">
+        </div>
+        <!-- div WITH 'row', BG is set to image at cover size.  -->
+        <div class="row">
+          <div id="deer3" class="col-lg-12">
+            <img src="./static/matrix.gif" id="smallMatrix" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="segments" class="container-fluid"></div> 
+  </div>
+	<script src="bundle.js"></script>
+	</body>
+<html>
