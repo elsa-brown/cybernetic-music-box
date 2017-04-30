@@ -1,11 +1,7 @@
 body {
   background-image: url('./static/deer1.jpg');
   background-size: cover;
-}
-
-.visible {
-  z-index: -1;
-  position: absolute;
+  background-position: center;
 }
 
 #segments {
@@ -13,6 +9,7 @@ body {
   position: relative;
   margin-top: 350px !important;
   margin-bottom: 350px;
+  display: none;
 }
 
 div {

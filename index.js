@@ -8,6 +8,9 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+// fade in text
+$('#segments').fadeIn(2000)
+
 // create Scroll Magic controller object
 const controller = new ScrollMagic.Controller()
 
