@@ -1,7 +1,7 @@
 body {
   background-image: url('./static/deer1.jpg');
   background-size: cover;
-  background-position: center;
+  /*background-position: center;*/
 }
 
 #segments {

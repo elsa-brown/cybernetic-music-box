@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "watchify index.js -o bundle.js -v",
-    "serve": "http-server -c-1"
+    "serve": "http-server -c-1",
+    "start": "npm start"
   },
   "author": "elsa",
   "license": "ISC",
