@@ -20,9 +20,11 @@ div {
 }
 
 h3 {
-  margin-top: 0 !important;
+  margin: 0 0 auto; !important;
+  font-size: 30px;
   text-align: right;
-  color: rgba(255, 255, 255, .5)
+  color: rgba(255, 255, 255, .5);
+  font-family: 'Libre Baskerville', serif;
 }
 
 a:hover {

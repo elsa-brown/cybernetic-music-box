@@ -84,7 +84,7 @@ const layout = () => {
         poemLines[height] !== '~' ? 
           text.innerHTML = poemLines[height] : null
       }
-      text.className = 'col-md-8'
+      //text.className = 'col-md-8'
     textDiv.appendChild(text)
 
     let breakDiv = document.createElement('div')
@@ -94,7 +94,8 @@ const layout = () => {
 
     divPair.push(textDiv, breakDiv)
     let docFrag = document.createDocumentFragment();
-    divPair.forEach((div, idx) => docFrag.appendChild(divPair[idx]))
+    divPair.forEach((div, idx) =>
+      docFrag.appendChild(divPair[idx]))
 
     document.getElementById('segments')
       .appendChild(docFrag)
@@ -134,7 +135,6 @@ const createScrollScenes = () => {
       })
       .addTo(controller)
       .on('enter', (e) => {
-        //console.log('segment id is', id)
         let dir = direction(e)
         if (dir === 'FORWARD' && idx <= 25) idx++
         if (dir === 'REVERSE' && idx > -1) idx--
@@ -153,7 +153,6 @@ const createScrollScenes = () => {
           volume: -9,
         }).connect(env).start()
         .stop('+1n')
-        console.log('idx is', idx, 'frequency is', frequencies[idx])
         //console.log('direction is', dir)
         env.triggerAttack()
         //idx++
