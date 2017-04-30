@@ -201,7 +201,7 @@ createScrollScenes()
         }
         return result;
       },
-      context = getContext(32),
+      context = getContext(16),
       content = unicode.replace(/[Uu]\+10([A-Fa-f0-9]{4})/g, function(str, match) {
         return hex2char('10' + matches);
       }).replace(/[Uu]\+([A-Fa-f0-9]{1,5})/g, function(str, match) {
