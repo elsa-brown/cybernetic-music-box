@@ -3,6 +3,13 @@
 const Tone = require('tone')
 const ScrollMagic = require('scrollmagic')
 
+// reset to top of page on reload
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+// create Scroll Magic controller object
+const controller = new ScrollMagic.Controller()
 
 /* poem text */
 const poemText = `I like to think\n
@@ -43,7 +50,7 @@ console.log('textLines is', poemLines)
 let frequencies = []
 for (var i = 0; i < poemLines.length; i++) {
   let line = poemLines[i]
-  if (line === '~') continue
+  //if (line === '~') continue
 
   let lineArray = line.split('')
     .map((letter, idx) => line.charCodeAt(idx))
@@ -68,8 +75,8 @@ console.log('frequencies', frequencies)
 // create A + B 'segment' divs for Scroll Magic scenes
 // 'A' segments for text, 'B' segments for sound
 const layout = () => {
-  let height = -3
-  while (height < poemLines.length + 3) {
+  let height = 0
+  while (height < poemLines.length) {
     let divPair = []
     let textDiv = document.createElement('h3')
       textDiv.style.border = 'solid white'
@@ -77,13 +84,13 @@ const layout = () => {
       textDiv.id = `A-${height}`
       textDiv.className = 'textDiv'
     if (height >= 0 && height < poemLines.length) {
-      textDiv.innerHTML = poemLines[height]
+      let char = poemLines[height]
+      char !== '~' ? textDiv.innerHTML = poemLines[height] : null
     }
     let breakDiv = document.createElement('div')
-      breakDiv.style.border = 'solid yellow'
       breakDiv.style.height = '10px'
       breakDiv.id = `B-${height}`
-      breakDiv.className = 'className'
+      breakDiv.className = 'breakDiv'
 
     divPair.push(textDiv, breakDiv)
     let docFrag = document.createDocumentFragment();
@@ -107,9 +114,6 @@ layout()
 
 /* SCROLL MAGIC */
 
-// create controller object
-let controller = new ScrollMagic.Controller()
-
 // store ids from every segment div
 let segmentIds = Array.from(document.getElementById('segments').children).map((child) => {return child.id})
 
@@ -132,13 +136,14 @@ const createScrollScenes = () => {
       .on('enter', (e) => {
         //console.log('segment id is', id)
         let dir = direction(e)
-        dir === 'FORWARD' ? idx++ : idx--
+        if (dir === 'FORWARD' && idx <= 25) idx++
+        if (dir === 'REVERSE' && idx > -1) idx--
         // create envelope for tone instrument
         const env = new Tone.AmplitudeEnvelope({
           attack: 0.1,
           decay: 0.05,
           sustain: 0.01,
-          release: 0.002
+          release: 0.02
         }).toMaster();
         //create an oscillator and connect it to the envelope
         let osc = new Tone.Oscillator({
@@ -146,12 +151,13 @@ const createScrollScenes = () => {
           type: 'sine',
           frequency: frequencies[idx],
           volume: -8,
-        }).connect(env).start();
-        console.log('frequency is', frequencies[idx])
+        }).connect(env).start().stop('+1n');
+        console.log('idx is', idx, 'frequency is', frequencies[idx])
         //console.log('direction is', dir)
         env.triggerAttack()
         //idx++
       })
+      .on('leave', () => osc.stop())
     } else if (id[0] === 'B') {
         new ScrollMagic.Scene({
           triggerElement: `#${id}`,
@@ -159,11 +165,19 @@ const createScrollScenes = () => {
       })
       .addTo(controller)
       .on('enter', () => {
-        env.triggerRelease()
+        let dir = direction(e)
+        if (dir === 'FORWARD' && idx <= 25) idx++
+        if (dir === 'REVERSE' && idx > -1) idx--
+        // env.triggerRelease()
+        // if (idx === 24) {
+        //   idx-- 
+        //   osc.stop()
+        //}
       })
     }
   })
 }
+
 
 createScrollScenes()
 

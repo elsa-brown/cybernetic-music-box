@@ -8,9 +8,11 @@ body {
   position: absolute;
 }
 
-.segments {
+#segments {
   z-index: 5;
   position: relative;
+  margin-top: 200px !important;
+  margin-bottom: 200px;
 }
 
 div {
