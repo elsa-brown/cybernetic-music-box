@@ -18,7 +18,7 @@ div {
 
 h3 {
   margin: 0 0 auto; !important;
-  font-size: 30px;
+  font-size: 32px;
   text-align: right;
  /* color: rgba(139,69,19, .3);*/
   color: rgba(25,51,0, .3);
@@ -139,7 +139,7 @@ a:hover {
     opacity: 0.25;
   }
   4% {
-    opacity: 0.2;
+    opacity: 0.3;
   }
   6% {
     opacity: 0.35;
@@ -223,7 +223,7 @@ a:hover {
     opacity: 0.5;
   }
   to {
-    opacity: 0.2;
+    opacity: 0.3;
   }
 }
 
