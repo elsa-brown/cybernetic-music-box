@@ -13,82 +13,10 @@ body {
   position: relative;
 }
 
-.matrix {
-  opacity: 0.25;
-/*  height: 800px;
-  background-image: url('./static/matrix.gif');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;*/ 
+div {
+  margin-top: 0 !important;
 }
 
-#deer1 {
-/*  background-color: red;*/
-  height: 800px;
-  background-image: url('./static/deer1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+h3 {
+  margin-top: 0 !important;
 }
-
-#deer2 {
-/*  background-color: red;*/
-  height: 800px;
-  background-image: url('./static/deer2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  
-}
-
-#deer3 {
-/*  background-color: red;*/
-  height: 800px;
-  background-image: url('./static/deer3.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  
-}
-
-#smallMatrix {
-  opacity: 0.4;
-  width: 30%;
-  float: right;
-  margin-top: 250px;
-  margin-right: 50px;
-}
-
-
-
-/*.fade {
-  opacity: 0;
-}
-
-.active {
-  opacity: 1;
-}
-
-/*body {
-  background: url('../images/cat.ong');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}*/
-/*
-#play {
-	width: 100%;
-}
-
-#red {
-  background-color: red;
-}
-
-#img1 {
-  width: 100%;
-  height: 100%;
-  background-image: url('./static/deer2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}*/
