@@ -113,32 +113,16 @@ let controller = new ScrollMagic.Controller()
 // store ids from every segment div
 let segmentIds = Array.from(document.getElementById('segments').children).map((child) => {return child.id})
 
-// create envelope for tone instrument (to be created)
-const env = new Tone.AmplitudeEnvelope({
-  attack: 0.01,
-  decay: 0.05,
-  sustain: 0.01,
-  release: 0.002
-}).toMaster();
-
 /* create Scroll Magic scenes */
 
 const direction = (evt) => 
   evt.target.controller().info('scrollDirection')
 
-let idx = 0
 const createScrollScenes = () => {
 
+  let idx = 0
   segmentIds.forEach((id) => {
-    //console.log('id is', id)
-     //create an oscillator and connect it to the envelope
-    let osc = new Tone.Oscillator({
-      partials: [],
-      type: 'sine',
-      frequency: frequencies[idx],
-      volume: -8,
-    }).connect(env).start();
-
+    console.log('idx is', idx)
     if (id[0] === 'A') {
       new ScrollMagic.Scene({
         triggerElement: `#${id}`,
@@ -146,11 +130,27 @@ const createScrollScenes = () => {
       })
       .addTo(controller)
       .on('enter', (e) => {
-        console.log('segment id is', id)
+        //console.log('segment id is', id)
         let dir = direction(e)
-        console.log('direction is', dir)
+        dir === 'FORWARD' ? idx++ : idx--
+        // create envelope for tone instrument
+        const env = new Tone.AmplitudeEnvelope({
+          attack: 0.1,
+          decay: 0.05,
+          sustain: 0.01,
+          release: 0.002
+        }).toMaster();
+        //create an oscillator and connect it to the envelope
+        let osc = new Tone.Oscillator({
+          partials: [],
+          type: 'sine',
+          frequency: frequencies[idx],
+          volume: -8,
+        }).connect(env).start();
+        console.log('frequency is', frequencies[idx])
+        //console.log('direction is', dir)
         env.triggerAttack()
-        idx++
+        //idx++
       })
     } else if (id[0] === 'B') {
         new ScrollMagic.Scene({
@@ -167,3 +167,6 @@ const createScrollScenes = () => {
 
 createScrollScenes()
 
+/* Scroll Magic scenes created */
+
+/* SCROLL MAGIC complete! */
