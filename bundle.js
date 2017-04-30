@@ -80,7 +80,7 @@ const layout = () => {
   while (height < poemLines.length) {
     let divPair = []
     let textDiv = document.createElement('h3')
-      textDiv.style.border = 'solid white'
+      //textDiv.style.border = 'solid white'
       textDiv.style.height = '50px'
       textDiv.id = `A-${height}`
       textDiv.className = 'textDiv'
@@ -151,7 +151,7 @@ const createScrollScenes = () => {
           partials: [],
           type: 'sine',
           frequency: frequencies[idx],
-          volume: -8,
+          volume: -9,
         }).connect(env).start().stop('+1n');
         console.log('idx is', idx, 'frequency is', frequencies[idx])
         //console.log('direction is', dir)
