@@ -73,7 +73,7 @@ console.log('frequencies', frequencies)
 // 'A' segments for text, 'B' for sound
 const layout = () => {
   let height = 0
-  while (height < poemLines.length) {
+  while (height <= poemLines.length) {
     let divPair = []
     let textDiv = document.createElement('div')
       textDiv.style.height = '50px'
@@ -82,7 +82,7 @@ const layout = () => {
       let text = document.createElement('h3')
       if (height >= 0 && height < poemLines.length) {
         poemLines[height] !== '~' ? 
-          text.innerHTML = poemLines[height] : null
+          text.innerHTML = poemLines[height] : undefined
       }
       //text.className = 'col-md-8'
     textDiv.appendChild(text)
@@ -127,17 +127,20 @@ const createScrollScenes = () => {
 
   let idx = 0
   segmentIds.forEach((id) => {
-    console.log('idx is', idx)
+    console.log('id is', id)
     if (id[0] === 'A') {
       new ScrollMagic.Scene({
         triggerElement: `#${id}`,
         duration: 50
       })
       .addTo(controller)
+      .setClassToggle(`#${id}`, 'flicker')
       .on('enter', (e) => {
+        console.log('frequency is', frequencies[idx], idx)
         let dir = direction(e)
         if (dir === 'FORWARD' && idx <= 25) idx++
         if (dir === 'REVERSE' && idx > -1) idx--
+        if (dir === 'REVERSE' && idx === -1) idx++
         // create envelope for tone instrument
         const env = new Tone.AmplitudeEnvelope({
           attack: 0.1,
