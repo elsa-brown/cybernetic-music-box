@@ -21,4 +21,11 @@ div {
 
 h3 {
   margin-top: 0 !important;
+  text-align: right;
+  color: rgba(255, 255, 255, .5)
 }
+
+a:hover {
+  text-decoration: : none !important;
+}
+

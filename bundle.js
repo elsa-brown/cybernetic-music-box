@@ -41,17 +41,14 @@ brothers and sisters,\n
 and all watched over\n
 by machines of loving grace.\n`
 
-/* string manipulation: converting poem to frequency values */
+/* convert poem to frequency values... */
 
-const poemLines = poemText.split(/\r?\n/).filter((elem) => elem !== '') 
-
-console.log('textLines is', poemLines)
+const poemLines = poemText.split(/\r?\n/).filter((elem) => elem !== '')
 
 // calculate median frequency for each line of poem and store as array
 let frequencies = []
 for (var i = 0; i < poemLines.length; i++) {
   let line = poemLines[i]
-  //if (line === '~') continue
 
   let lineArray = line.split('')
     .map((letter, idx) => line.charCodeAt(idx))
@@ -73,21 +70,24 @@ console.log('frequencies', frequencies)
 
 /* make layout */
 
-// create A + B 'segment' divs for Scroll Magic scenes
-// 'A' segments for text, 'B' segments for sound
+// create A + B 'segment' elements for Scroll Magic scenes
+// 'A' segments for text, 'B' for sound
 const layout = () => {
   let height = 0
   while (height < poemLines.length) {
     let divPair = []
-    let textDiv = document.createElement('h3')
-      //textDiv.style.border = 'solid white'
+    let textDiv = document.createElement('div')
       textDiv.style.height = '50px'
       textDiv.id = `A-${height}`
       textDiv.className = 'textDiv'
-    if (height >= 0 && height < poemLines.length) {
-      let char = poemLines[height]
-      char !== '~' ? textDiv.innerHTML = poemLines[height] : null
-    }
+      let text = document.createElement('h3')
+      if (height >= 0 && height < poemLines.length) {
+        poemLines[height] !== '~' ? 
+          text.innerHTML = poemLines[height] : null
+      }
+      text.className = 'col-md-8'
+    textDiv.appendChild(text)
+
     let breakDiv = document.createElement('div')
       breakDiv.style.height = '10px'
       breakDiv.id = `B-${height}`
@@ -120,7 +120,7 @@ let segmentIds = Array.from(document.getElementById('segments').children).map((c
 
 /* create Scroll Magic scenes */
 
-const direction = (evt) => 
+const direction = (evt) =>
   evt.target.controller().info('scrollDirection')
 
 const createScrollScenes = () => {
@@ -147,33 +147,17 @@ const createScrollScenes = () => {
           release: 0.02
         }).toMaster();
         //create an oscillator and connect it to the envelope
-        let osc = new Tone.Oscillator({
+        new Tone.Oscillator({
           partials: [],
           type: 'sine',
           frequency: frequencies[idx],
           volume: -9,
-        }).connect(env).start().stop('+1n');
+        }).connect(env).start()
+        .stop('+1n')
         console.log('idx is', idx, 'frequency is', frequencies[idx])
         //console.log('direction is', dir)
         env.triggerAttack()
         //idx++
-      })
-      .on('leave', () => osc.stop())
-    } else if (id[0] === 'B') {
-        new ScrollMagic.Scene({
-          triggerElement: `#${id}`,
-          duration: 10
-      })
-      .addTo(controller)
-      .on('enter', () => {
-        let dir = direction(e)
-        if (dir === 'FORWARD' && idx <= 25) idx++
-        if (dir === 'REVERSE' && idx > -1) idx--
-        // env.triggerRelease()
-        // if (idx === 24) {
-        //   idx-- 
-        //   osc.stop()
-        //}
       })
     }
   })
