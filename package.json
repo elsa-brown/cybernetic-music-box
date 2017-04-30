@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "watchify index.js -o bundle.js -v",
     "serve": "http-server -c-1",
-    "start": "start"
+    "start": "http-server -c-1"
   },
   "author": "elsa",
   "license": "ISC",
