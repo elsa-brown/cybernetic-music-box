@@ -36,6 +36,10 @@ h3 {
   -webkit-animation-timing-function: linear;
 }
 
+#links {
+  position: fixed;
+}
+
 a:hover {
   text-decoration: : none !important;
 }
