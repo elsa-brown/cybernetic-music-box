@@ -3,6 +3,9 @@
 const Tone = require('tone')
 const ScrollMagic = require('scrollmagic')
 
+// window.onload = function() 
+document.getElementById('links').style.display = 'none'
+
 // reset to top of page on reload
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -105,15 +108,11 @@ const layout = () => {
 
     height++
   }
-  console.log('layout complete', (height))
 }
 
 layout()
 
 /* layout completed! */
-
-
-/* text fade functions */
 
 
 /* SCROLL MAGIC */

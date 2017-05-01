@@ -44,7 +44,7 @@ a:hover {
   text-decoration: : none !important;
 }
 
-/*flicker animations*/
+/*flicker animations adapted from https://gist.github.com/oddlyzen/1229700*/
 @-webkit-keyframes flicker {
   from {
     opacity: 0.2;
