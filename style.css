@@ -40,6 +40,10 @@ h3 {
   position: fixed;
 }
 
+a:visited {
+  text-decoration: : none !important;
+}
+
 a:hover {
   text-decoration: : none !important;
 }
