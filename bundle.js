@@ -4,6 +4,12 @@
 const Tone = require('tone')
 const ScrollMagic = require('scrollmagic')
 
+const audioButton = document.querySelector('.audio-off');
+audioButton.addEventListener('click', (evt) => {
+  evt.target.className = 'audio-button audio-on';
+  evt.target.innerHTML = 'Audio Enabled. Scroll to Play.';
+}, { once: true }); 
+
 // reset to top of page on reload
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -66,8 +72,6 @@ for (var i = 0; i < poemLines.length; i++) {
   frequencies.push(value)
 }
 
-console.log('frequencies', frequencies)
-
 /* string manipulation complete! */
 
 
@@ -106,15 +110,11 @@ const layout = () => {
 
     height++
   }
-  console.log('layout complete', (height))
 }
 
 layout()
 
 /* layout completed! */
-
-
-/* text fade functions */
 
 
 /* SCROLL MAGIC */
@@ -131,7 +131,6 @@ const createScrollScenes = () => {
 
   let idx = 0
   segmentIds.forEach((id) => {
-    console.log('id is', id)
     if (id[0] === 'A') {
       new ScrollMagic.Scene({
         triggerElement: `#${id}`,
@@ -140,7 +139,6 @@ const createScrollScenes = () => {
       .addTo(controller)
       .setClassToggle(`#${id}`, 'flicker')
       .on('enter', (e) => {
-        console.log('frequency is', frequencies[idx], idx)
         let dir = direction(e)
         if (dir === 'FORWARD' && idx <= 25) idx++
         if (dir === 'REVERSE' && idx > -1) idx--
@@ -157,12 +155,10 @@ const createScrollScenes = () => {
           partials: [],
           type: 'sine',
           frequency: frequencies[idx],
-          volume: -9,
+          volume: -25,
         }).connect(env).start()
         .stop('+1n')
-        //console.log('direction is', dir)
         env.triggerAttack()
-        //idx++
       })
     }
   })
@@ -174,6 +170,64 @@ createScrollScenes()
 /* Scroll Magic scenes created */
 
 /* SCROLL MAGIC complete! */
+
+/* emjoi favicon script source: https://gist.github.com/chadsmith/31083625dfa6dadfd7dc */
+
+
+(function() {
+  var FavEmoji = function(unicode) {
+    'use strict';
+    var
+      canvas = document.createElement('canvas'),
+      getContext = function(w) {
+        canvas.width = canvas.height = w;
+        context = canvas.getContext('2d');
+        context.font = 'normal normal normal 32px/' + w + 'px sans';
+        context.textBaseline = 'middle';
+        return context;
+      },
+      hex2char = function(hex) {
+        var
+          result = '',
+          n = parseInt(hex, 16);
+        if(n <= 0xFFFF)
+          result += String.fromCharCode(n);
+        else if(n <= 0x10FFFF) {
+          n -= 0x10000
+          result += String.fromCharCode(0xD800 | (n >> 10)) + String.fromCharCode(0xDC00 | (n & 0x3FF));
+        }
+        return result;
+      },
+      context = getContext(32),
+      content = unicode.replace(/[Uu]\+10([A-Fa-f0-9]{4})/g, function(str, match) {
+        return hex2char('10' + matches);
+      }).replace(/[Uu]\+([A-Fa-f0-9]{1,5})/g, function(str, match) {
+        return hex2char(match);
+      }),
+      iconWidth,
+      link = document.createElement('link');
+    if(!canvas.toDataURL || !document.querySelectorAll)
+      return;
+    iconWidth = context.measureText(content).width;
+    if(iconWidth > canvas.width)
+      context = getContext(iconWidth);
+    context.fillText(content, (canvas.width - iconWidth) / 2, canvas.height / 2);
+    link.setAttribute('rel', 'icon');
+    link.setAttribute('type', 'image/png');
+    link.setAttribute('href', canvas.toDataURL('image/png'));
+    for(var icons = document.querySelectorAll('link[rel*=icon]'), i = 0, l = icons.length; i < l; i++)
+      icons[i].parentNode.removeChild(icons[i]);
+    document.getElementsByTagName('head')[0].appendChild(link);
+  };
+  if(typeof define !== 'undefined' && define.amd)
+    define([], function() {
+      return FavEmoji;
+    });
+  else if(typeof module !== 'undefined' && module.exports)
+    module.exports = FavEmoji;
+  else
+    this.FavEmoji = FavEmoji;
+})( 'U+1F3B6');
 
 },{"scrollmagic":2,"tone":3}],2:[function(require,module,exports){
 /*!

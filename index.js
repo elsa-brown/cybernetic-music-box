@@ -3,8 +3,11 @@
 const Tone = require('tone')
 const ScrollMagic = require('scrollmagic')
 
-// window.onload = function() 
-document.getElementById('links').style.display = 'none'
+const audioButton = document.querySelector('.audio-off');
+audioButton.addEventListener('click', (evt) => {
+  evt.target.className = 'audio-button audio-on';
+  evt.target.innerHTML = 'Audio Enabled. Scroll to Play.';
+}, { once: true }); 
 
 // reset to top of page on reload
 window.onbeforeunload = function () {
@@ -68,8 +71,6 @@ for (var i = 0; i < poemLines.length; i++) {
   frequencies.push(value)
 }
 
-console.log('frequencies', frequencies)
-
 /* string manipulation complete! */
 
 
@@ -129,7 +130,6 @@ const createScrollScenes = () => {
 
   let idx = 0
   segmentIds.forEach((id) => {
-    console.log('id is', id)
     if (id[0] === 'A') {
       new ScrollMagic.Scene({
         triggerElement: `#${id}`,
@@ -138,7 +138,6 @@ const createScrollScenes = () => {
       .addTo(controller)
       .setClassToggle(`#${id}`, 'flicker')
       .on('enter', (e) => {
-        console.log('frequency is', frequencies[idx], idx)
         let dir = direction(e)
         if (dir === 'FORWARD' && idx <= 25) idx++
         if (dir === 'REVERSE' && idx > -1) idx--
@@ -155,12 +154,10 @@ const createScrollScenes = () => {
           partials: [],
           type: 'sine',
           frequency: frequencies[idx],
-          volume: -9,
+          volume: -25,
         }).connect(env).start()
         .stop('+1n')
-        //console.log('direction is', dir)
         env.triggerAttack()
-        //idx++
       })
     }
   })
