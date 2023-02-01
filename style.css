@@ -1,7 +1,6 @@
 body {
   background-image: url('./static/deer1.jpg');
   background-size: cover;
-  /*background-position: center;*/
 }
 
 #segments {
@@ -12,12 +11,8 @@ body {
   display: none;
 }
 
-div {
-  margin-top: 0 !important;
-}
-
 h3 {
-  margin: 0 0 auto; !important;
+  margin: 0 0 auto; 
   font-size: 32px;
   text-align: right;
  /* color: rgba(139,69,19, .3);*/
@@ -36,16 +31,25 @@ h3 {
   -webkit-animation-timing-function: linear;
 }
 
-#links {
-  position: fixed;
+.controls {
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-a:visited {
-  text-decoration: : none !important;
+.audio-button {
+  margin-bottom: 5px;
 }
 
-a:hover {
-  text-decoration: : none !important;
+.audio-on {
+  margin-bottom: 5px;
+  background: white;
+  border: none;
+  box-shadow: none;
+  cursor: unset;
 }
 
 /*flicker animations adapted from https://gist.github.com/oddlyzen/1229700*/
