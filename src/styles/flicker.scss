@@ -1,0 +1,93 @@
+/*flicker animation adapted from https://gist.github.com/oddlyzen/1229700*/
+@keyframes flicker {
+  from {
+    opacity: 0.25;
+  }
+  4% {
+    opacity: 0.3;
+  }
+  6% {
+    opacity: 0.35;
+  }
+  8% {
+    opacity: 0.45;
+  }
+  10% {
+    opacity: 0.35;
+  }
+  11% {
+    opacity: 0.3;
+  }
+  12% {
+    opacity: 0.55;
+  }
+  14% {
+    opacity: 0.45;
+  }
+  16% {
+    opacity: 0.6;
+  }
+  17% {
+    opacity: 0.45;
+  }
+  19% {
+    opacity: 0.4;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  24% {
+    opacity: 0.4;
+  }
+  26% {
+    opacity: 0.79;
+  }
+  28% {
+    opacity: 0.3;
+  }
+  38% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  42% {
+    opacity: 0.4;
+  }
+  44% {
+    opacity: 0.5;
+  }
+  46% {
+    opacity: 0.5;
+  }
+  56% {
+    opacity: 0.5;
+  }
+  58% {
+    opacity: 0.75;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  68% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.6; /*peak*/
+  }
+  72% {
+    opacity: 0.5;
+  }
+  93% {
+    opacity: 0.5;
+  }
+  95% {
+    opacity: 0.6; /*peak*/
+  }
+  97% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0.3;
+  }
+}

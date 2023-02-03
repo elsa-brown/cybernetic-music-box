@@ -1,0 +1,63 @@
+@use 'normalize.scss'
+@use 'variables' as *
+@use 'flicker'
+
+a
+  text-decoration: none
+
+body
+  background-image: url("../deer1.jpg")
+  background-size: cover
+  padding: $s0 $s1
+
+button
+  padding: 0.25rem 0.5rem
+  font-family: 'Work Sans', sans-serif
+  cursor: pointer
+  &:disabled
+    background: none
+    border: none
+    color: white
+    cursor: default
+
+main
+  display: flex
+
+menu
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin: 0 0 $s4
+  padding: 0
+  list-style-type: none
+  li
+    height: 48px
+    display: flex
+    align-items: center
+  span
+    font-size: $s1
+
+p
+  margin: 0
+  line-height: 140%
+
+ul
+  list-style-type: none
+  margin: 0
+
+.container
+  max-width: 1200px
+  margin: 0 auto
+
+.poem
+  width: 33.33rem
+  margin: 40vh auto 46vh
+  text-align: right
+  font-family: 'Libre Baskerville', serif
+  font-size: $s3
+  color: rgba(25, 51, 0, 0.5)
+  span
+    cursor: pointer
+
+.flicker 
+  animation: 3s linear infinite flicker
