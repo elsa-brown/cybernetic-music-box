@@ -1,4 +1,4 @@
-export default poemText = `I like to think
+const poemText = `I like to think
 (and the sooner the better!)
 of a cybernetic meadow
 where mammals and computers
@@ -25,3 +25,5 @@ returned to our mammal
 brothers and sisters,
 and all watched over
 by machines of loving grace.`;
+
+export default poemText;

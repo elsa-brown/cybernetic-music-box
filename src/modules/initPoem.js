@@ -1,6 +1,6 @@
 import poemText from "./poem";
 
-export default initPoem = () => {
+const initPoem = () => {
   const poem = document.querySelector(".poem");
   const poemLines = poemText.split("\n");
 
@@ -35,3 +35,5 @@ export default initPoem = () => {
 
   return poem;
 };
+
+export default initPoem;
