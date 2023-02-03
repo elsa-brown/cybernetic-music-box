@@ -9,10 +9,14 @@ body
   background-image: url("../deer1.jpg")
   background-size: cover
   padding: $s0 $s1
+  min-width: 580
 
 button
   padding: 0.25rem 0.5rem
+  background: #EFEFEF
+  border: solid 2px #767676
   font-family: 'Work Sans', sans-serif
+  color: #0F0F0F
   cursor: pointer
   &:disabled
     background: none
@@ -53,7 +57,9 @@ ul
   width: 33.33rem
   margin: 40vh auto 46vh
   text-align: right
-  font-family: 'Libre Baskerville', serif
+  font-family: 'Libre Baskerville', 'Baskerville', serif
+  font-style: italic
+  font-weight: 400
   font-size: $s3
   color: rgba(25, 51, 0, 0.5)
   span
@@ -61,3 +67,10 @@ ul
 
 .flicker 
   animation: 3s linear infinite flicker
+
+@media screen and (max-width: 426px)
+  body
+    min-width: unset
+  .poem
+    font-size: $s2
+

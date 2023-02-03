@@ -33538,7 +33538,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _poem = require("./poem");
 var _poemDefault = parcelHelpers.interopDefault(_poem);
-exports.default = initPoem = ()=>{
+const initPoem = ()=>{
     const poem = document.querySelector(".poem");
     const poemLines = (0, _poemDefault.default).split("\n");
     for (const line of poemLines){
@@ -33562,11 +33562,12 @@ exports.default = initPoem = ()=>{
     poemLines.forEach((line)=>{});
     return poem;
 };
+exports.default = initPoem;
 
 },{"./poem":"cb2mA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cb2mA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-exports.default = poemText = `I like to think
+const poemText = `I like to think
 (and the sooner the better!)
 of a cybernetic meadow
 where mammals and computers
@@ -33593,6 +33594,7 @@ returned to our mammal
 brothers and sisters,
 and all watched over
 by machines of loving grace.`;
+exports.default = poemText;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jC2qd","8lqZg"], "8lqZg", "parcelRequire4c51")
 
